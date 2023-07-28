@@ -4,7 +4,7 @@ import "../../src/styles.css";
 import NewTodoForm from "../Components/NewTodoForm";
 import List from "../Components/List";
 
-export default function MainWindow() {
+export default function MainWindow({ theme }) {
   const [todos, setTodos] = useState(() => {
     const localValue = localStorage.getItem("ITEM");
     if (localValue == null) {
@@ -50,7 +50,7 @@ export default function MainWindow() {
   }
 
   return (
-    <div>
+    <div id={theme}>
       <NewTodoForm addTodo={addTodo} />
 
       {/* TODO LIST  */}

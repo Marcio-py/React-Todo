@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-export default function Login({ openMain }) {
+export default function Login({ openMain, theme }) {
   return (
-    <div>
+    <div id={theme}>
       <div className="container">
         <div className="box">
           <form className="inputContainer">
