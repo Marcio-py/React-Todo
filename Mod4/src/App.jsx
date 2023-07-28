@@ -40,7 +40,7 @@ function toggleTodos(id, completed){
       if(todo.id === id){
         return {...todo, completed}
       }
-      // return todo // return todo if non match id
+      return todo // return todo if non match id
     })
   })
 }
