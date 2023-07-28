@@ -1,30 +1,20 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 
-
-export default function NewTodoForm({addTodo}) {
-
-    const [newItem, setNewItem] = useState();
-
+export default function NewTodoForm({ addTodo }) {
+  const [newItem, setNewItem] = useState();
+  const todoRef = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    // setTodos((currentTodos) => {
-    //   return [
-    //     ...currentTodos, // pass in complete obejct
-    //     {
-    //       id: crypto.randomUUID(),
-    //       title: newItem, // adds new object with newItem as title
-    //       completed: false,
-    //     },
-    //   ];
-    // });
-
-    addTodo(newItem)
+    addTodo(newItem);
 
     setNewItem(""); // resets newItem
   }
+  useEffect(() => {
+    todoRef.current.focus();
+  }, []);
 
   return (
     <div>
@@ -37,6 +27,7 @@ export default function NewTodoForm({addTodo}) {
             id="item"
             value={newItem}
             name=""
+            ref={todoRef}
             onChange={(e) => setNewItem(e.target.value)}
           />
           <button className="add" type="submit">
