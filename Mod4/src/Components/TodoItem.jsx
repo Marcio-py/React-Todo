@@ -2,6 +2,7 @@ import React from 'react'
 
 // export default function TodoItem({completed, id, title, toggleTodos, deleteTodos}) {
 export default function TodoItem({completed, id, title, toggleTodos, deleteTodos}) {
+    
   return (
     <div>
        <li key={id}>
