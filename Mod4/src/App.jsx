@@ -3,6 +3,7 @@ import Login from "./Components/Login";
 import MainWindow from "./Components/MainWindow";
 import "./styles.css";
 import Navbar from "./Components/Navbar";
+import ReactSwitch from "react-switch";
 
 export const ThemeContext = React.createContext(null);
 
@@ -25,7 +26,10 @@ function App() {
           <MainWindow theme={theme} />
         </>
       ) : (
-        <Login openMain={openMain} theme={theme} />
+        <>
+          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+          <Login openMain={openMain} theme={theme} />
+        </>
       )}
     </ThemeContext.Provider>
   );

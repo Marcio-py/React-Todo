@@ -7,6 +7,7 @@ export default function Login({ openMain, theme }) {
         <div className="box">
           <form className="inputContainer">
             <h1>Login</h1>
+
             <div className="usernameContainer">
               <label htmlFor="username">Username</label>
               <input
