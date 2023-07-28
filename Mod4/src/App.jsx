@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import NewTodoForm from "./Components/NewTodoForm";
 import List from "./Components/List";
 
 function App() {
-  // const [newItem, setNewItem] = useState();
-  const [todos, setTodos] = useState([]);
+
+  const [todos, setTodos] = useState(()=>{
+    const localValue = localStorage.getItem('ITEM');
+    if(localValue == null){
+      return []
+    }
+    return JSON.parse(localValue)
+  });
+
+
+useEffect(()=>{
+  localStorage.setItem('ITEM', JSON.stringify(todos))
+
+},[todos])
 
 
 function addTodo(title){
@@ -33,14 +45,14 @@ function toggleTodos(id, completed){
   })
 }
 
-// function deleteTodos(id){
-//   setTodos((currentTodos)=>{
-//     return currentTodos.filter((todo)=>{
-//       todo.id !== id 
+function deleteTodos(id){
+  setTodos((currentTodos)=>{
+    return currentTodos.filter((todo)=>{
+     return todo.id !== id 
       
-//     })
-//   })
-// }
+    })
+  })
+}
 
 
   return (
@@ -49,7 +61,7 @@ function toggleTodos(id, completed){
 
       {/* TODO LIST  */}
       <h1 className="header">Todo list</h1>
-    <List todos={todos} toggleTodos={toggleTodos}/>
+    <List todos={todos} toggleTodos={toggleTodos} deleteTodos={deleteTodos}/>
     </>
   );
 }
