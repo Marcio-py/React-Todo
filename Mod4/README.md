@@ -17,7 +17,7 @@ The stack used was:
     git clone https://github.com/IvanPiceno171/React-Todo.git
 
     # Get inside the folder.
-    cd bloco-notas
+    cd Mod4
 
     # Instal the dependencies.
     npm i ou npm install
